@@ -1,0 +1,39 @@
+LAB 16 - PROVENANCE GATE
+Decision date: 2026-03-31
+Availability rule: published on or before the decision date
+Input rows: 12
+
+ROW FUNNEL
+1. Quarantined: no ticker: removed 1; rows [11]; remaining 11
+2. Exact duplicate: removed 1; rows [7]; remaining 10
+3. Published after decision date: removed 3; rows [3, 8, 10]; remaining 7
+4. Older vintage replaced by a revision: removed 1; rows [2]; remaining 6
+As-of panel row numbers: 1, 4, 5, 6, 9, 12
+
+AS-OF PANEL
+Row | Ticker | Month measured | Published on | Index
+  1 | AAA    | 2026-01        | 2026-02-10   | 101.0
+  4 | AAA    | 2026-02        | 2026-03-25   | 103.0
+  5 | BBB    | 2026-01        | 2026-02-10   | 98.0
+  6 | BBB    | 2026-02        | 2026-03-10   | 97.0
+  9 | CCC    | 2026-01        | 2026-02-10   | 110.0
+ 12 | CCC    | 2026-02        | 2026-03-10   | 111.0
+
+SIGNALS: (latest month / previous calendar month - 1) * 100
+Ticker | As-of signal | Naive signal | Naive minus as-of (percentage points)
+AAA | +1.98% (February 2026) | +5.83% (March 2026) | +3.85
+BBB | -1.02% (February 2026) | -5.15% (March 2026) | -4.13
+CCC | +0.91% (February 2026) | +1.82% (February 2026) | +0.91
+
+NAIVE PANEL AUDIT
+Latest publication for each ticker/month, with the publication cutoff ignored:
+row 1: AAA 2026-01, 101.0, published 2026-02-10 [published by decision date]
+row 3: AAA 2026-03, 109.0, published 2026-04-10 [published after decision date]
+row 4: AAA 2026-02, 103.0, published 2026-03-25 [published by decision date]
+row 5: BBB 2026-01, 98.0, published 2026-02-10 [published by decision date]
+row 6: BBB 2026-02, 97.0, published 2026-03-10 [published by decision date]
+row 8: BBB 2026-03, 92.0, published 2026-04-10 [published after decision date]
+row 9: CCC 2026-01, 110.0, published 2026-02-10 [published by decision date]
+row 10: CCC 2026-02, 112.0, published 2026-04-05 [published after decision date]
+
+The naive column is a leakage comparison; index changes are not investment returns.

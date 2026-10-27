@@ -1,0 +1,42 @@
+LAB 16 - EXECUTED VALIDATION RECORD
+Python: 3.12.14
+Dependencies: Python standard library only
+
+Command: python asof.py
+Exit status: 0
+Saved report: output-2026-03-31.txt
+
+Command: python asof.py --date 2026-04-15
+Exit status: 0
+Saved report: output-2026-04-15.txt
+
+EDIT-DATE CHECK
+PASS: changed DECISION_DATE to 2026-04-15 in a temporary copy and ran it.
+PASS: edited-default report exactly matches the --date 2026-04-15 report.
+PASS: submitted asof.py is byte-for-byte unchanged and defaults to 2026-03-31.
+PASS: rerunning submitted asof.py exactly reproduces the baseline report.
+
+Command: python -m unittest -v
+Exit status: 0
+
+test_all_known_signals_and_months (test_asof.ProvenanceGateTests.test_all_known_signals_and_months) ... ok
+test_ambiguous_same_date_revision_is_rejected (test_asof.ProvenanceGateTests.test_ambiguous_same_date_revision_is_rejected) ... ok
+test_changed_input_changes_computed_signal (test_asof.ProvenanceGateTests.test_changed_input_changes_computed_signal) ... ok
+test_duplicate_detection_precedes_cutoff (test_asof.ProvenanceGateTests.test_duplicate_detection_precedes_cutoff) ... ok
+test_insufficient_history (test_asof.ProvenanceGateTests.test_insufficient_history) ... ok
+test_invalid_inputs_are_rejected (test_asof.ProvenanceGateTests.test_invalid_inputs_are_rejected) ... ok
+test_known_asof_panel (test_asof.ProvenanceGateTests.test_known_asof_panel) ... ok
+test_known_row_funnel (test_asof.ProvenanceGateTests.test_known_row_funnel) ... ok
+test_late_revision_arrives_on_its_publication_date (test_asof.ProvenanceGateTests.test_late_revision_arrives_on_its_publication_date) ... ok
+test_later_date_matches_naive (test_asof.ProvenanceGateTests.test_later_date_matches_naive) ... ok
+test_missing_calendar_month_is_not_monthly_growth (test_asof.ProvenanceGateTests.test_missing_calendar_month_is_not_monthly_growth) ... ok
+test_publication_cutoff_includes_same_day (test_asof.ProvenanceGateTests.test_publication_cutoff_includes_same_day) ... ok
+test_quarantine_precedes_duplicate_detection (test_asof.ProvenanceGateTests.test_quarantine_precedes_duplicate_detection) ... ok
+test_rule_order_preserves_earlier_ccc_vintage (test_asof.ProvenanceGateTests.test_rule_order_preserves_earlier_ccc_vintage) ... ok
+test_shuffled_input_preserves_source_row_results (test_asof.ProvenanceGateTests.test_shuffled_input_preserves_source_row_results) ... ok
+test_zero_denominator_is_not_a_return (test_asof.ProvenanceGateTests.test_zero_denominator_is_not_a_return) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 0.001s
+
+OK
